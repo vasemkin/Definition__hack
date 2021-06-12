@@ -1,0 +1,15 @@
+.active {
+    position: relative;
+}
+
+.active::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    height: 5px;
+    width: 100%;
+    display: block;
+    background: #096BEF;
+    border-radius: 0px 0px 15px 15px;
+}
