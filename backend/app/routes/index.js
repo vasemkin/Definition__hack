@@ -13,7 +13,7 @@ const index = async function (app) {
       idToOrder = {
         ...idToOrder,
         [id] : {
-          ...body.order,
+          ...body,
           filled : 0,
           status : 'Accepted',
           id : id

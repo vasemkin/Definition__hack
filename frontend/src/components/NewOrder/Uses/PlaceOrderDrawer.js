@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { postOrder } from '../../../store/actions/orderActions'
+
 import {
     Drawer,
     DrawerContent,
@@ -17,7 +20,23 @@ import {
 } from '@chakra-ui/react'
 
 function OrderDrawer(props) {
-  
+    
+    const dispatch = useDispatch()
+    const [order, setOrder] = useState({
+      from : 'ETH',
+      to : 'ETH',
+      quantityFrom : null,
+      limitPrice : null,
+      margin : null,
+      enableAntiVolatility : true,
+      useMargin : true,
+      buyAtMarketPrice : true
+    })
+
+    const dispatchOrder = () => { 
+      dispatch(postOrder(order))
+    }
+
     return (
       <>
         <Drawer
@@ -58,7 +77,14 @@ function OrderDrawer(props) {
                         color="rgba(120, 120, 120, 1)"
                         fontSize="14px"
                         >From</Text>
-                        <Select variant="flushed" iconColor="#D2D2D2" w="100%">
+                        <Select 
+                        onChange={(e) => {
+                          setOrder({
+                            ...order,
+                            from : e.target.value
+                          })
+                        }}
+                        required variant="flushed" iconColor="#D2D2D2" w="100%">
                             <option value="ETH">ETH</option>
                             <option value="DAI">DAI</option>
                             <option value="BTC">BTC</option>
@@ -70,7 +96,14 @@ function OrderDrawer(props) {
                         color="rgba(120, 120, 120, 1)"
                         fontSize="14px"
                         >To</Text>
-                        <Select variant="flushed" iconColor="#D2D2D2" w="100%">
+                        <Select 
+                        onChange={(e) => {
+                          setOrder({
+                            ...order,
+                            to : e.target.value
+                          })
+                        }}
+                        required variant="flushed" iconColor="#D2D2D2" w="100%">
                             <option value="ETH">ETH</option>
                             <option value="DAI">DAI</option>
                             <option value="BTC">BTC</option>
@@ -84,7 +117,14 @@ function OrderDrawer(props) {
                     fontSize="14px"
                     >Quantity from
                     </Text>
-                    <Input variant="flushed" />
+                    <Input 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        quantityFrom : e.target.value
+                      })
+                    }}
+                    required variant="flushed" />
                 </Box>
 
                 <Box mt="2rem">
@@ -93,7 +133,14 @@ function OrderDrawer(props) {
                     fontSize="14px"
                     >Limit price
                     </Text>
-                    <Input variant="flushed" />
+                    <Input 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        limitPrice : e.target.value
+                      })
+                    }}
+                    required variant="flushed" />
                 </Box>
 
                 <Box mt="2rem">
@@ -102,25 +149,55 @@ function OrderDrawer(props) {
                     fontSize="14px"
                     >Margin
                     </Text>
-                    <Input variant="flushed" />
+                    <Input 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        margin : e.target.value
+                      })
+                    }}
+                    required variant="flushed" />
                 </Box>
 
                 <Box mt="2rem">
-                    <Checkbox defaultIsChecked>Do not execute order if price is volatile</Checkbox>
+                    <Checkbox 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        enableAntiVolatility : e.target.checked
+                      })
+                    }}
+                    defaultIsChecked>Do not execute order if price is volatile</Checkbox>
                 </Box>
 
                 <Box mt="1rem">
-                    <Checkbox defaultIsChecked>Use margin</Checkbox>
+                    <Checkbox 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        useMargin : e.target.checked
+                      })
+                    }}
+                    defaultIsChecked>Use margin</Checkbox>
                 </Box>
 
                 <Box mt="1rem">
-                    <Checkbox defaultIsChecked>Buy at market price</Checkbox>
+                    <Checkbox 
+                    onChange={(e) => {
+                      setOrder({
+                        ...order,
+                        buyAtMarketPrice : e.target.checked
+                      })
+                    }}
+                    defaultIsChecked>Buy at market price</Checkbox>
                 </Box>
 
             </DrawerBody>
   
             <DrawerFooter>
-              <Button variant="main" w="100%" onClick={props.onClose}>
+              <Button 
+              onClick={dispatchOrder}
+              variant="main" w="100%">
                 Отправить
               </Button>
             </DrawerFooter>
