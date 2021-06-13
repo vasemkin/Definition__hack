@@ -13,7 +13,15 @@ function NewOrder () {
     return (
         <Box>
             <BackToList />
-            <Box borderRadius="5px" color="#fff" mt="2rem" p="20px" bg="#096BEF">
+            <Box 
+            borderRadius="5px" 
+            color="#fff" 
+            mt="2rem" 
+            p="20px" 
+            bgImage="./img/banner.svg"
+            bgPos="center"
+            bgSize="cover"
+            bgRepeat="no-repeat">
                 <Text>Выберите подходящие под вас стратегии</Text>
             </Box>
             <Strategies />

@@ -97,8 +97,9 @@ function OrderDrawer(props) {
                     />
                 </Box>
 
-                <Box p="0 1rem" bg="#F4F7F9" borderRadius="5px">
-                    <Box p="1rem 0" borderBottom="1px solid rgba(236, 236, 236, 1)">
+                <Flex p="0 1rem" justify="space-between" bg="#F4F7F9" borderRadius="5px">
+
+                    <Box w="40%" p="1rem 0">
                         <Text
                         color="rgba(39, 39, 39, 1)"
                         fontSize="14px"
@@ -106,7 +107,7 @@ function OrderDrawer(props) {
                         >ETH</Text>
 
                         <Flex justify="space-between">
-                            <Box w="50%">
+                            <Box>
                                 <Text
                                 color="rgba(39, 39, 39, 0.78)"
                                 fontSize="12px"
@@ -117,22 +118,16 @@ function OrderDrawer(props) {
                                 color="rgba(39, 39, 39, 1)"
                                 >{progress.boughtCount}шт</Text>
                             </Box>
-                            
-                            <Box w="50%">
-                                <Text
-                                color="rgba(39, 39, 39, 0.78)"
-                                fontSize="12px"
-                                >Цена</Text>
-                                
-                                <Text
-                                fontSize="12px"
-                                color="rgba(39, 39, 39, 1)"
-                                >$145,134</Text>
-                            </Box>
                         </Flex>
                     </Box>
+
+                    <Flex w="20%" justify="start" align="center">
+                        <Box w="20px">
+                            <Image w="100%" src='./img/arrowright.svg' alt="arrow right"/>
+                        </Box>
+                    </Flex>
                 
-                    <Box p="1rem 0">
+                    <Box w="40%" p="1rem 0">
                         <Text
                         color="rgba(39, 39, 39, 1)"
                         fontSize="14px"
@@ -140,7 +135,7 @@ function OrderDrawer(props) {
                         >ETH</Text>
 
                         <Flex justify="space-between">
-                            <Box w="50%">
+                            <Box>
                                 <Text
                                 color="rgba(39, 39, 39, 0.78)"
                                 fontSize="12px"
@@ -151,22 +146,25 @@ function OrderDrawer(props) {
                                 color="rgba(39, 39, 39, 1)"
                                 >{progress.boughtCount}шт</Text>
                             </Box>
-                            
-                            <Box w="50%">
-                                <Text
-                                color="rgba(39, 39, 39, 0.78)"
-                                fontSize="12px"
-                                >Цена</Text>
-                                
-                                <Text
-                                fontSize="12px"
-                                color="rgba(39, 39, 39, 1)"
-                                >$145,134</Text>
-                            </Box>
                         </Flex>
                     </Box>
                 
-                </Box>
+                </Flex>
+                    
+                <Flex mt="2rem" justify="space-between" align="center">
+                    <Flex align="center">
+                        <Box w="20px" mr="1rem">
+                            <Image w="100%" src='./img/course.svg' alt="course"/>
+                        </Box>
+                        <Text
+                        fontSize="14px"
+                        >Курс</Text>
+                    </Flex>
+
+                    <Text>
+                        10.40643049684303869
+                    </Text>
+                </Flex>
 
             </DrawerBody>
   
