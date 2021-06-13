@@ -2,8 +2,8 @@ const RPC_URL = 'http://localhost:8545';
 const CHAIN_ID = '1';
 const LOP_CONTRACT = '0x3ef51736315F52d568D6D2cf289419b9CfffE782';
 
-const ABC_CONTRACT = '0x6B175474E89094C44Da98b954EedeAC495271d0F'; // '0x90dF38ed2C057da6d86EE25874C319f9DA8dB928'; // DAI
-const XYZ_CONTRACT = '0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2'; // '0xBDA07531efc8DDA0922d7189339AaE78B4846363'; // WETH
+const ABC_CONTRACT = '0x90dF38ed2C057da6d86EE25874C319f9DA8dB928'; // DAI
+const XYZ_CONTRACT = '0xBDA07531efc8DDA0922d7189339AaE78B4846363'; // WETH
 
 const MM_CONTRACT = '0x438af366276b9bC2fd2C47F9797Bb77d5C1491B2';
 const TAKER_KEY = '0xeffbe889a0e1e069062a407b0b22516816313bbb428f100130d9408c641a741b';
@@ -25,7 +25,7 @@ const tokenABC = new web3.eth.Contract(abi, ABC_CONTRACT);
 const tokenXYZ = new web3.eth.Contract(abi, XYZ_CONTRACT);
 const microMaker = new web3.eth.Contract(mmAbi, MM_CONTRACT);
 
-const LimitOrderBuilder = require('@1inch/limit-order-protocol');
+const LimitOrderBuilder = require('@1inch/limit-order-protocol').LimitOrderBuilder;
 const PrivateKeyProviderConnector = require('@1inch/limit-order-protocol/connector/private-key-provider.connector').PrivateKeyProviderConnector;
 
 module.exports = async function (makerAmount) {
@@ -37,15 +37,15 @@ module.exports = async function (makerAmount) {
     const limitOrderBuilder = new LimitOrderBuilder(LOP_CONTRACT, CHAIN_ID, connector);
 
     let predicate = lop.methods.or([MM_CONTRACT], [microMaker.methods.isNotVolatile().encodeABI()]).encodeABI();
-    let gma = lop.methods.arbitraryStaticCall(MM_CONTRACT, microMaker.methods.getMakerAmountChainLink(makerAmount, makerAmount).encodeABI()).encodeABI();
-    let gta = lop.methods.arbitraryStaticCall(MM_CONTRACT, microMaker.methods.getTakerAmountChainLink(makerAmount, makerAmount).encodeABI()).encodeABI();
+    let gma = lop.methods.arbitraryStaticCall(MM_CONTRACT, microMaker.methods.getMakerAmountChainLink(makerAmount).encodeABI()).encodeABI();
+    let gta = lop.methods.arbitraryStaticCall(MM_CONTRACT, microMaker.methods.getTakerAmountChainLink(makerAmount).encodeABI()).encodeABI();
 
     const limitOrder = limitOrderBuilder.buildLimitOrder({
         makerAssetAddress: ABC_CONTRACT,
         takerAssetAddress: XYZ_CONTRACT,
         makerAddress: MM_CONTRACT,
         makerAmount: makerAmount,
-        takerAmount: 3000000,
+        takerAmount: makerAmount,
         predicate: predicate,
         permit: '0x',
         interaction: '0xFF',
@@ -53,6 +53,7 @@ module.exports = async function (makerAmount) {
         getTakerAmount: gta,
     });
 
+    limitOrder.makerAmount = makerAmount;
     console.log(`New order created - ${JSON.stringify(limitOrder)}`);
     console.log();
     return;
