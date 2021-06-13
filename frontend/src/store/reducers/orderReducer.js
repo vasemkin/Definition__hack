@@ -1,11 +1,14 @@
 import { 
-CREATE_ORDER
+CREATE_ORDER,
+LIST_ORDERS,
+REFRESH_ORDERS
 } 
 from '../actions/actionTypes'
 
 const defaultStore = {
     orders : [],
-    ordersCreated : []
+    ordersCreated : [],
+    ordersFetching : true
 }
 
 export default function userReducer (store = defaultStore, action) {
@@ -17,6 +20,13 @@ export default function userReducer (store = defaultStore, action) {
             return {
                 ...store,
                 ordersCreated : [...store.ordersCreated, action.payload]
+            }
+
+        case LIST_ORDERS:
+            //payload - orders
+            return {
+                ...store, 
+                orders : action.payload
             }
 
         default:

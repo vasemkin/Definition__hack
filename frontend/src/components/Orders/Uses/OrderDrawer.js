@@ -15,11 +15,7 @@ import {
 } from '@chakra-ui/react'
 
 function OrderDrawer(props) {
-
-    const [progress, SetProgress] = useState({
-        boughtCount : 40,
-        totalCount : 50,
-    })
+    const order = props.order
   
     return (
       <>
@@ -54,8 +50,6 @@ function OrderDrawer(props) {
             </Flex>
   
             <DrawerBody p="30px">
-                <p>{props.order}</p>
-                <br />
 
                 <Box p="16px" bg="#F4F7F9" borderRadius="5px" mb="2rem">
                     <Flex justify="space-between" align="center">
@@ -69,7 +63,7 @@ function OrderDrawer(props) {
 
                                 <Text
                                 fontSize="14px"
-                                >{progress.boughtCount}шт
+                                >{order.filled}шт
                                 </Text>
                         </Flex>
 
@@ -84,7 +78,7 @@ function OrderDrawer(props) {
 
                                 <Text
                                 fontSize="14px"
-                                >{progress.totalCount}шт
+                                >{order.quantityFrom}шт
                                 </Text>
                         </Flex>
                     </Flex>
@@ -92,7 +86,7 @@ function OrderDrawer(props) {
                     <Progress 
                     h="4px"
                     borderRadius="15px"
-                    value={Math.floor((progress.boughtCount / progress.totalCount) * 100)} 
+                    value={Math.floor((order.filled / order.quantityFrom) * 100)} 
                     mt="1rem"
                     />
                 </Box>
@@ -104,7 +98,7 @@ function OrderDrawer(props) {
                         color="rgba(39, 39, 39, 1)"
                         fontSize="14px"
                         mb="1rem"
-                        >ETH</Text>
+                        >{order.from}</Text>
 
                         <Flex justify="space-between">
                             <Box>
@@ -116,7 +110,7 @@ function OrderDrawer(props) {
                                 <Text
                                 fontSize="12px"
                                 color="rgba(39, 39, 39, 1)"
-                                >{progress.boughtCount}шт</Text>
+                                >{order.filled}шт</Text>
                             </Box>
                         </Flex>
                     </Box>
@@ -132,7 +126,7 @@ function OrderDrawer(props) {
                         color="rgba(39, 39, 39, 1)"
                         fontSize="14px"
                         mb="1rem"
-                        >ETH</Text>
+                        >{order.to}</Text>
 
                         <Flex justify="space-between">
                             <Box>
@@ -144,7 +138,7 @@ function OrderDrawer(props) {
                                 <Text
                                 fontSize="12px"
                                 color="rgba(39, 39, 39, 1)"
-                                >{progress.boughtCount}шт</Text>
+                                >{order.filled}шт</Text>
                             </Box>
                         </Flex>
                     </Box>
@@ -162,14 +156,14 @@ function OrderDrawer(props) {
                     </Flex>
 
                     <Text>
-                        10.40643049684303869
+                        {order.limitPrice}
                     </Text>
                 </Flex>
 
             </DrawerBody>
   
             <DrawerFooter>
-              <Button variant="primary" w="100%" onClick={props.onClose}>
+              <Button variant="main" w="100%" onClick={props.onClose}>
                 Отменить стратегию
               </Button>
             </DrawerFooter>

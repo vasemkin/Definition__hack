@@ -14,7 +14,7 @@ import NewOrder from 'components/NewOrder/NewOrder';
 import Home from 'components/Home/Home'
 import React from "react"
 
-function Layout() {
+function Layout(props) {
     return(
         <Box>
             <Header />
@@ -23,11 +23,11 @@ function Layout() {
                 <Box  maxWidth="1024px" m="0 auto">    
                     <Switch>
                         <Route path="/wallet">
-                            <Wallet />
+                            <Wallet order={props.order} />
                         </Route>
 
                         <Route path="/orders">
-                            <Orders />
+                            <Orders order={props.order} />
                         </Route>
     
                         <Route path='/neworder'>

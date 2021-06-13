@@ -1,6 +1,5 @@
 import { 
 CREATE_ORDER, 
-CONSTRUCT_ORDER,
 LIST_ORDERS } 
 from './actionTypes'
 
@@ -45,7 +44,7 @@ export const listOrders = () => {
             const res = await axios.get(baseQuery)
             dispatch(listOrdersCreator(res.data))
         } catch (error) {
-            
+            // fail
         }
     }   
 }

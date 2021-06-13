@@ -18,9 +18,13 @@ import {
 import CustomTh from 'components/Common/Misc/CustomTh'
 import OrderDrawer from 'components/Orders/Uses/OrderDrawer'
   
-function OrdersTable () {
+function OrdersTable (props) {
+    const order = props.order
+
+    console.log(order)
+
     const { isOpen, onOpen, onClose } = useDisclosure()
-    const [currentOrder, setCurrentOrder] = useState(0)
+    const [currentOrder, setCurrentOrder] = useState({})
 
     const showOrderHandler = (order) => {
         setCurrentOrder(order)
@@ -41,8 +45,8 @@ function OrdersTable () {
                 >
                     <Tr>
                         <CustomTh text="Название ордера"/>
-                        <CustomTh text="Название токена"/>
-                        <CustomTh text="Мейкер аккаунт"/>
+                        <CustomTh text="Откуда"/>
+                        <CustomTh text="Куда"/>
                         <CustomTh text="Стратегия"/>
                         <CustomTh text="Статус"/>
                         <CustomTh text="Действия"/>
@@ -52,14 +56,14 @@ function OrdersTable () {
                 bg="#fff"
                 >
                     {
-                        [1,2,3].length > 0 ?
-                        [1,2,3].map((token) => {
+                        Object.values(order.orders).length > 0 ?
+                        Object.values(order.orders).map((order) => {
                             return(
                                 <Tr key={Date.now() + Math.random()}>
-                                    <Td>Супер ордер</Td>
-                                    <Td>ETH</Td>
-                                    <Td>{token}</Td>
-                                    <Td>статус</Td>
+                                    <Td>{order.id}</Td>
+                                    <Td>{order.from}</Td>
+                                    <Td>{order.to}</Td>
+                                    <Td>XSH9</Td>
                                     <Td>
                                         <Flex 
                                         align="center"
@@ -71,12 +75,12 @@ function OrdersTable () {
                                         w="fit-content"
                                         >
                                             <Box w="7px" h="7px" bg="#25AF71" mr="0.5rem" borderRadius="50%"></Box>
-                                            <Text>accepted</Text>
+                                            <Text>{order.status}</Text>
                                         </Flex>
                                         
                                     </Td>
                                     <Td>
-                                        <Button onClick={() => {showOrderHandler(token)}} variant="primary" size="sm">Подробнее</Button>
+                                        <Button onClick={() => {showOrderHandler(order)}} variant="primary" size="sm">Подробнее</Button>
                                     </Td>
                                 </Tr>
                             )
