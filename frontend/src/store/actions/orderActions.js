@@ -1,11 +1,18 @@
 import { 
 CREATE_ORDER, 
-LIST_ORDERS } 
+LIST_ORDERS,
+TOGGLE_FETCHING } 
 from './actionTypes'
 
 import axios from 'axios'
 
 const { REACT_APP_API_URL } = process.env
+
+export const refreshOrders = () => {
+    return {
+        type: TOGGLE_FETCHING
+    }
+}
 
 export const postOrderCreator = (orderId) => {
     return {
@@ -24,6 +31,7 @@ export const postOrder = (order) => {
                 data: order
             })
             dispatch(postOrderCreator(res.data.orderId))
+            dispatch(refreshOrders())
         } catch (error) {
             // fail
         }

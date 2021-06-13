@@ -25,7 +25,7 @@ function SingleStrategy(props) {
                         return(
                             <Flex key={Math.random()} justify="start" align="center">
                                 <Box w="25px" h="25px" mr="1rem">
-                                    <Image w="100%" src="./img/shoppingbag.svg" alt="icon" />
+                                    <Image w="100%" src={item.imageSrc} alt="icon" />
                                 </Box>
         
                                 <Box>

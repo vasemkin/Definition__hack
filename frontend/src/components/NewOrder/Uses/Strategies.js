@@ -29,22 +29,27 @@ function Strategies() {
                     </h2>
 
                     <AccordionPanel>
-                        <SingleStrategy items={[
+                        <SingleStrategy 
+                        items={[
                             {
                                 title : 'Creation',
-                                description : 'creates order with market price'
+                                description : 'creates order with market price',
+                                imageSrc: './img/order.svg'
                             },
                             {
                                 title : 'Anti-volatility',
-                                description : 'anti-volatility rule: if market is volatile right now, we will avoid filling your order'
+                                description : 'anti-volatility rule: if market is volatile right now, we will avoid filling your order',
+                                imageSrc: './img/margin.svg'
                             },
                             {
                                 title : 'No margin',
-                                description : 'margin trading: we provide you with margin to increase your trade profits'
+                                description : 'margin trading: we provide you with margin to increase your trade profits',
+                                imageSrc: './img/order.svg'
                             },
                             {
                                 title : 'Combined',
-                                description : 'combination of our best stategies into one'
+                                description : 'combination of our best stategies into one',
+                                imageSrc: './img/margin.svg'
                             }
                         ]}/>
                     </AccordionPanel>
@@ -66,7 +71,8 @@ function Strategies() {
                         <SingleStrategy items={[
                             {
                                 title : 'Price',
-                                description : 'we get the current market price to create the order'
+                                description : 'we get the current market price to create the order',
+                                imageSrc: './img/order.svg'
                             }
                         ]}/>
                     </AccordionPanel>
@@ -88,7 +94,8 @@ function Strategies() {
                         <SingleStrategy items={[
                             {
                                 title : 'Chainlink',
-                                description : 'we monitor market volatility by utilizing chainlink data'
+                                description : 'we monitor market volatility by utilizing chainlink data',
+                                imageSrc: './img/margin.svg'
                             }
                         ]}/>
                     </AccordionPanel>
@@ -110,7 +117,8 @@ function Strategies() {
                         <SingleStrategy items={[
                             {
                                 title : 'Aave',
-                                description : 'aave helps us take margin and provide a shoulder'
+                                description : 'aave helps us take margin and provide a shoulder',
+                                imageSrc: './img/order.svg'
                             }
                         ]}/>
                     </AccordionPanel>

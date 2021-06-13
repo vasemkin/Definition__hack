@@ -2,8 +2,38 @@ const axios = require('axios');
 const uuid = require('uuid');
 
 const index = async function (app) {
-
+    let tokens = {
+      'WETH' : {
+        name : 'WETH',
+        count : 332,
+        balance : 2331
+      },
+      'DAI' : {
+        name : 'DAI',
+        count : 1334,
+        balance : 1334
+      },
+      'ENJ' : {
+        name : 'ENJ',
+        count : 32,
+        balance : 331
+      },
+      'MANA' : {
+        name : 'MANA',
+        count : 264,
+        balance : 341
+      },
+      'UNI' : {
+        name : 'UNI',
+        count : 342,
+        balance : 2241
+      }
+    }
     let idToOrder = {}
+
+    app.get('/api/get_tokens', (req, res) => {
+      res.json(tokens)
+    })
 
     app.post('/api/create_new_order', (req, res) => {
 
