@@ -21,7 +21,7 @@ function Strategies() {
                     <h2>
                         <AccordionButton>
                             <Box flex="1" p="20px 30px" borderRadius="15px" textAlign="left">
-                                Ебем рыночек 24/7 бесплатные деньги
+                                Premium
                             </Box>
                             <AccordionIcon />
 
@@ -31,24 +31,20 @@ function Strategies() {
                     <AccordionPanel>
                         <SingleStrategy items={[
                             {
-                                title : 'Создание',
-                                description : 'Создает два ордера'
+                                title : 'Creation',
+                                description : 'creates order with market price'
                             },
                             {
-                                title : 'Покупка дешевле',
-                                description : 'Ордер на покупку чуть дешевле рыночной цены'
+                                title : 'Anti-volatility',
+                                description : 'anti-volatility rule: if market is volatile right now, we will avoid filling your order'
                             },
                             {
-                                title : 'Увеличиваем позицию',
-                                description : 'Увеличиваем вашу позицию за счет моментального займа(margin)'
+                                title : 'No margin',
+                                description : 'margin trading: we provide you with margin to increase your trade profits'
                             },
                             {
-                                title : 'Продажа дороже',
-                                description : 'Ордер на продажу чуть дороже рыночной цены'
-                            },
-                            {
-                                title : 'Безопасность',
-                                description : 'при высокой волатильности ни один из ордеров не исполняется'
+                                title : 'Combined',
+                                description : 'combination of our best stategies into one'
                             }
                         ]}/>
                     </AccordionPanel>
@@ -59,7 +55,7 @@ function Strategies() {
                     <h2>
                         <AccordionButton>
                             <Box flex="1" p="20px 30px" borderRadius="15px" textAlign="left">
-                                Очередная суперская стратегия на рынке
+                                Get market price
                             </Box>
                             <AccordionIcon />
 
@@ -69,12 +65,52 @@ function Strategies() {
                     <AccordionPanel>
                         <SingleStrategy items={[
                             {
-                                title : 'Создание',
-                                description : 'Создает два ордера'
-                            },
+                                title : 'Price',
+                                description : 'we get the current market price to create the order'
+                            }
+                        ]}/>
+                    </AccordionPanel>
+                </AccordionItem>
+
+
+                <AccordionItem border="none" borderRadius="15px" bg="#fff" mb="2rem">
+                    <h2>
+                        <AccordionButton>
+                            <Box flex="1" p="20px 30px" borderRadius="15px" textAlign="left">
+                                Anti-volatility
+                            </Box>
+                            <AccordionIcon />
+
+                        </AccordionButton>
+                    </h2>
+
+                    <AccordionPanel>
+                        <SingleStrategy items={[
                             {
-                                title : 'Покупка дешевле',
-                                description : 'Ордер на покупку чуть дешевле рыночной цены'
+                                title : 'Chainlink',
+                                description : 'we monitor market volatility by utilizing chainlink data'
+                            }
+                        ]}/>
+                    </AccordionPanel>
+                </AccordionItem>
+
+
+                <AccordionItem border="none" borderRadius="15px" bg="#fff" mb="2rem">
+                    <h2>
+                        <AccordionButton>
+                            <Box flex="1" p="20px 30px" borderRadius="15px" textAlign="left">
+                                Margin trading
+                            </Box>
+                            <AccordionIcon />
+
+                        </AccordionButton>
+                    </h2>
+
+                    <AccordionPanel>
+                        <SingleStrategy items={[
+                            {
+                                title : 'Aave',
+                                description : 'aave helps us take margin and provide a shoulder'
                             }
                         ]}/>
                     </AccordionPanel>
