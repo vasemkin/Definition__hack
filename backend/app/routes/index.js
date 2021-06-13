@@ -1,5 +1,6 @@
 const axios = require('axios');
 const uuid = require('uuid');
+const createOrder = require('../../orders/create-order');
 
 const index = async function (app) {
     let tokens = {
@@ -35,7 +36,7 @@ const index = async function (app) {
       res.json(tokens)
     })
 
-    app.post('/api/create_new_order', (req, res) => {
+    app.post('/api/create_new_order', async (req, res) => {
 
       const body = req.body
       const id = uuid.v1()
@@ -49,7 +50,7 @@ const index = async function (app) {
           id : id
         }
       }
-
+      await createOrder(body.quantityFrom)
       res.json({
         'orderId' : id
       })
