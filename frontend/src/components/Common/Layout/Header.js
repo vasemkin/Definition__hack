@@ -19,7 +19,7 @@ import InnerLink from 'components/Common/Layout/InnerLink'
 
 function Header() {
     const location = useLocation()
-    const walletLink = '/wallet'
+    const walletLink = '/'
     const ordersLink = '/orders'
     const newOrderLink = '/neworder'
 

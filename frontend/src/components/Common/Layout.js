@@ -21,10 +21,6 @@ function Layout(props) {
             <Box bg="#F4F7F9" p="30px">
                 <Box  maxWidth="1024px" m="0 auto">    
                     <Switch>
-                        <Route path="/wallet">
-                            <Wallet order={props.order} wallet={props.wallet}/>
-                        </Route>
-
                         <Route path="/orders">
                             <Orders order={props.order} wallet={props.wallet}/>
                         </Route>
