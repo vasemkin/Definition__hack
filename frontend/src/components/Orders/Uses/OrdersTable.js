@@ -63,7 +63,7 @@ function OrdersTable (props) {
                                     <Td>{order.id}</Td>
                                     <Td>{order.from}</Td>
                                     <Td>{order.to}</Td>
-                                    <Td>XSH9</Td>
+                                    <Td>Premium</Td>
                                     <Td>
                                         <Flex 
                                         align="center"

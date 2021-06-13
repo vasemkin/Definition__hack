@@ -27,8 +27,8 @@ function OrderDrawer(props) {
     const toast = useToast()
     const dispatch = useDispatch()
     const [order, setOrder] = useState({
-      from : 'ETH',
-      to : 'ETH',
+      from : 'WETH',
+      to : 'WETH',
       quantityFrom : null,
       limitPrice : null,
       margin : null,
