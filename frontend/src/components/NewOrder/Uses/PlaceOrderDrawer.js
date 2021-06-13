@@ -16,11 +16,13 @@ import {
     Image,
     Select,
     Input,
-    Checkbox
+    Checkbox,
+    useToast
 } from '@chakra-ui/react'
 
 function OrderDrawer(props) {
     
+    const toast = useToast()
     const dispatch = useDispatch()
     const [order, setOrder] = useState({
       from : 'ETH',
@@ -34,6 +36,15 @@ function OrderDrawer(props) {
     })
 
     const dispatchOrder = () => { 
+      toast({
+        position: "bottom",
+        render: () => (
+          <Box color="rgba(9, 107, 239, 1)" p="1rem" borderRadius="20px" textAlign="center" bg="#E8F7FF">
+            Ордер успешно отправлен
+          </Box>
+        ),
+        duration: 4000,
+      })
       dispatch(postOrder(order))
     }
 
