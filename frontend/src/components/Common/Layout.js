@@ -35,7 +35,7 @@ function Layout(props) {
                         </Route>
 
                         <Route path="/">
-                            <Home />
+                            <Wallet order={props.order} />
                         </Route>
                     </Switch>
                 </Box> 

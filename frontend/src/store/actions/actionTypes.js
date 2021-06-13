@@ -5,3 +5,4 @@ export const TOGGLE_FETCHING = 'TOGGLE_FETCHING'
 
 // wallet
 export const GET_TOKENS = 'GET_TOKENS'
+export const TOGGLE_TOKENFETCH = 'TOGGLE_TOKENFETCH'
