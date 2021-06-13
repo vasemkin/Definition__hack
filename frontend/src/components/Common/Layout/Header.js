@@ -21,13 +21,14 @@ function Header() {
     const location = useLocation()
     const walletLink = '/wallet'
     const ordersLink = '/orders'
+    const newOrderLink = '/neworder'
 
     return(
         <Box borderBottom="1px solid #ccc" bg="#fff" p="0 87px">
             <Flex align="center" justify="space-between" maxWidth="1024px" m="0 auto">
 
                 <Box w="130px" h="30px">
-                    logo
+                    MIKROMARKET
                     {/* <Image src="./img/Promo__logo.png" alt="NSD" /> */}
                 </Box>
 
@@ -38,6 +39,10 @@ function Header() {
 
                         <RouterLink to={ordersLink}>
                             <InnerLink isActive={ordersLink === location.pathname} imagePath="./img/shoppingbag.svg" imageOffet="0" text="Ордеры" />
+                        </RouterLink>
+
+                        <RouterLink to={newOrderLink}>
+                            <InnerLink isActive={newOrderLink === location.pathname} imagePath="./img/shoppingbag.svg" imageOffet="0" text="Стратегии" />
                         </RouterLink>
 
                 </Flex>

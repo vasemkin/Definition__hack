@@ -64,7 +64,9 @@ function Tokens () {
                                     </Td>
                                     <Td>
                                         <Flex>
-                                            <Button variant="primary" size="sm">Перейти к ордерам</Button>
+                                            <RouterLink to="/orders">
+                                                <Button variant="primary" size="sm">Перейти к ордерам</Button>
+                                            </RouterLink>
                                             <RouterLink to='/neworder'>
                                                 <Button ml="1rem" variant="secondary" size="sm">Новый ордер</Button>
                                             </RouterLink>
