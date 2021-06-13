@@ -9,18 +9,18 @@ import Balance from "components/Wallet/Uses/Balance"
 import TableSearch from "components/Wallet/Uses/TableSearch"
 import Tokens from "components/Wallet/Uses/Tokens"
 
-function Wallet () {
+function Wallet (props) {
     return(
         <Box>
             <Box mb="2rem">
                 <Flex justify="space-between" align="center">
-                    <Balance />
+                    <Balance wallet={props.wallet}/>
                     <TableSearch />   
                 </Flex>    
             </Box>
             
             <Box>
-                <Tokens />
+                <Tokens wallet={props.wallet}/>
             </Box>    
         </Box>
         

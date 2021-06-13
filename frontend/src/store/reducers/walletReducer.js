@@ -10,7 +10,8 @@ const defaultStore = {
 }
 
 export default function walletReducer (store = defaultStore, action) {
-    switch (action) {
+    
+    switch (action.type) {
         case TOGGLE_TOKENFETCH:{
             return {
                 ...store,
@@ -19,7 +20,6 @@ export default function walletReducer (store = defaultStore, action) {
         }
 
         case GET_TOKENS:
-            console.log('s')
             return {
                 ...store,
                 tokens : action.payload

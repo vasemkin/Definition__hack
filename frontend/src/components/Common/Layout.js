@@ -10,8 +10,7 @@ import {
 import Header from 'components/Common/Layout/Header'
 import Orders from 'components/Orders/Orders'
 import Wallet from 'components/Wallet/Wallet'
-import NewOrder from 'components/NewOrder/NewOrder';
-import Home from 'components/Home/Home'
+import NewOrder from 'components/NewOrder/NewOrder'
 import React from "react"
 
 function Layout(props) {
@@ -23,11 +22,11 @@ function Layout(props) {
                 <Box  maxWidth="1024px" m="0 auto">    
                     <Switch>
                         <Route path="/wallet">
-                            <Wallet order={props.order} />
+                            <Wallet order={props.order} wallet={props.wallet}/>
                         </Route>
 
                         <Route path="/orders">
-                            <Orders order={props.order} />
+                            <Orders order={props.order} wallet={props.wallet}/>
                         </Route>
     
                         <Route path='/neworder'>
@@ -35,7 +34,7 @@ function Layout(props) {
                         </Route>
 
                         <Route path="/">
-                            <Wallet order={props.order} />
+                            <Wallet order={props.order} wallet={props.wallet}/>
                         </Route>
                     </Switch>
                 </Box> 

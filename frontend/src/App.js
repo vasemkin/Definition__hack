@@ -23,7 +23,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <Router>
-        <Layout order={order}/>
+        <Layout order={order} wallet={wallet}/>
       </Router>
     </ChakraProvider>
   );

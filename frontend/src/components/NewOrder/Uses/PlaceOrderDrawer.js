@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { postOrder } from '../../../store/actions/orderActions'
+import { useSelector } from 'react-redux'
 
 import {
     Drawer,
@@ -21,6 +22,7 @@ import {
 } from '@chakra-ui/react'
 
 function OrderDrawer(props) {
+    const wallet = useSelector(state => state.wallet)
     
     const toast = useToast()
     const dispatch = useDispatch()
@@ -96,9 +98,10 @@ function OrderDrawer(props) {
                           })
                         }}
                         required variant="flushed" iconColor="#D2D2D2" w="100%">
-                            <option value="ETH">ETH</option>
-                            <option value="DAI">DAI</option>
-                            <option value="BTC">BTC</option>
+                            {Object.values(wallet.tokens).length > 0 ?
+                              Object.values(wallet.tokens).map((token) => {
+                                return(<option value={token.name}>{token.name}</option>)
+                              }) : null}
                         </Select>
                     </Box>  
                     
@@ -115,9 +118,10 @@ function OrderDrawer(props) {
                           })
                         }}
                         required variant="flushed" iconColor="#D2D2D2" w="100%">
-                            <option value="ETH">ETH</option>
-                            <option value="DAI">DAI</option>
-                            <option value="BTC">BTC</option>
+                          {Object.values(wallet.tokens).length > 0 ?
+                              Object.values(wallet.tokens).map((token) => {
+                                return(<option value={token.name}>{token.name}</option>)
+                              }) : null}
                         </Select>
                     </Box>  
                 </Flex>

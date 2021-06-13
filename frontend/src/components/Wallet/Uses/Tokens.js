@@ -20,7 +20,8 @@ import {
 
 import CustomTh from 'components/Common/Misc/CustomTh'
   
-function Tokens () {
+function Tokens (props) {
+    const wallet = props.wallet
 
     return(
         <Box mt="2rem">
@@ -44,21 +45,21 @@ function Tokens () {
                 bg="#fff"
                 >
                     {
-                        [1,2,3].length > 0 ?
-                        [1,2,3].map((token) => {
+                        Object.values(wallet.tokens).length > 0 ?
+                        Object.values(wallet.tokens).map((token) => {
                             return(
                                 <Tr key={Date.now() + Math.random()}>
-                                    <Td>ETH</Td>
-                                    <Td>{token}</Td>
+                                    <Td>{token.name}</Td>
+                                    <Td>{token.count}</Td>
                                     <Td>
                                         <Flex align="center">
-                                            <Text mr="1rem">{token}</Text>
+                                            <Text mr="1rem">{token.balance}</Text>
                                             <Box 
                                             borderRadius="15px"
                                             p="7px"
                                             fontSize="12px"
                                             color="rgba(37, 175, 113, 1)"
-                                            bg="#EAF8E9">+16%</Box>
+                                            bg="#EAF8E9">+{Math.floor(Math.random() * 23)}%</Box>
                                         </Flex>
                                         
                                     </Td>
